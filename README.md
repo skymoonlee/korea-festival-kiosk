@@ -123,6 +123,9 @@ ADMIN_PASSWORD=admin1234
 
 # 일반 직원 계정 비밀번호
 DEFAULT_USER_PASSWORD=staff1234
+
+# 결제 계좌 (고객 화면에 표시)
+NEXT_PUBLIC_BANK_ACCOUNT=농협 1234567890123 | 예금주: 홍길동
 ```
 
 ### 4. 개발 서버 실행
@@ -171,15 +174,15 @@ npm start
 
 ### 결제 계좌 변경
 
-고객 디스플레이(`/stream-customer`)에 표시되는 계좌번호를 변경하려면:
+고객 디스플레이(`/stream-customer`)에 표시되는 계좌번호는 환경변수로 설정합니다.
 
-`src/app/stream-customer/page.tsx` 파일에서 아래 부분을 수정:
+`.env` 파일에서:
 
-```tsx
-<div className="font-bold text-amber-900 text-lg md:text-xl">
-  농협 3021809590761 | 예금주: 이동현  // ← 이 부분을 수정
-</div>
+```env
+NEXT_PUBLIC_BANK_ACCOUNT=농협 1234567890123 | 예금주: 홍길동
 ```
+
+> `NEXT_PUBLIC_` 접두사가 붙은 환경변수는 빌드 시점에 포함되므로, 변경 후 `npm run build`를 다시 실행해야 합니다.
 
 ---
 
@@ -190,8 +193,7 @@ npm start
 - [ ] 고객용 디스플레이 태블릿 준비
 - [ ] 주방용 모니터 또는 태블릿 준비
 - [ ] 모든 기기가 같은 WiFi에 연결되었는지 확인
-- [ ] `.env` 파일에 비밀번호 설정
-- [ ] **결제 계좌번호 변경** (`src/app/stream-customer/page.tsx`)
+- [ ] `.env` 파일 설정 (비밀번호, 계좌번호 등)
 - [ ] 메뉴 및 가격 등록 (`/admin-food`)
 - [ ] 직원 계정 생성 (`/admin-maker`)
 - [ ] 각 페이지 접속 테스트

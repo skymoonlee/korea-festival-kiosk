@@ -39,3 +39,17 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Database
+/database/*.db
+/database/*.db-wal
+/database/*.db-shm
+
+# Private/Server-specific files
+pass.md
+setting_guide.md
+claude.md
+nginx.conf
+ecosystem.config.js
+deploy.sh
+.claude/
